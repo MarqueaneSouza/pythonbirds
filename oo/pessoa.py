@@ -1,22 +1,24 @@
 class Pessoa:
-    def __init__(self, *filhos, nome=None, idade = 35): #ALT + ENTER inclui o parâmetro (atributo) na linha abaixo do método.
+    def __init__(self, *filhos, nome=None, idade = 35):
         self.idade = idade
         self.nome = nome
         self.filhos = list(filhos)
 
     def cumprimentar(self):
         return f'Olá {id(self)}'
-if __name__ == '__main__': #crio a 'main' para nossos testes
+if __name__ == '__main__':
     marqueane = Pessoa(nome='Marqueane')
     luciano = Pessoa(marqueane, nome='Luciano')
-    print(Pessoa.cumprimentar(luciano)) #para executar o método eu peço o cumprimentar e passo o 'p'.
+    print(Pessoa.cumprimentar(luciano))
     print(id(luciano))
-    print(luciano.cumprimentar()) #executo o método utilizando o próprio objeto. E nesse caso, eu não preciso passar o objeto novamente.
+    print(luciano.cumprimentar())
     print(luciano.nome)
     print(luciano.idade)
-
     for filho in luciano.filhos:
         print(filho.nome)
 
-
-
+    luciano.sobrenome = 'Ramalho'
+    del luciano.filhos
+    print(luciano.sobrenome)
+    print(luciano.__dict__)
+    print(marqueane.__dict__)
